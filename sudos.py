@@ -57,7 +57,7 @@ def check_files():
             file.write(requests.get("https://raw.githubusercontent.com/lilmond/sudos/main/etc/useragents.txt").text)
             file.close()
     if not os.path.exists("./etc/proxies.txt"):
-        print(f"Info: Downloading proxies.txt")
+        print("Info: Downloading proxies.txt")
         download_proxy("./etc/proxies.txt")
 
 def download_proxy(output_path):
