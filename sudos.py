@@ -66,7 +66,10 @@ def download_proxy(output_path):
     for proxy_type in proxy_types:
         while True:
             try:
-                proxy_list += ([f"{proxy_type}://{proxy_address.strip()}" for item in requests.get(f"https://api.openproxy.space/lists/{proxy_type}").json()["data"] for proxy_address in item["items"]])
+                r = requests.get(f"https://api.openproxy.space/lists/{proxy_type}").json()["data"]
+                for item in r:
+                  for proxy_address in item["items"]:
+                    proxy_list.append(f"{proxy_type}://{proxy_address.strip()}")
                 break
             except Exception:
                 print(f"Warning: Unable to download proxy list. Type: {proxy_type}. Retrying...")
