@@ -30,7 +30,7 @@ def urlsplit(url):
     except Exception:
         parameters = ""
     
-    path = f"/{path}"
+    path = "/" + path
     if port == None:
         if protocol == "https":
             port = 443
